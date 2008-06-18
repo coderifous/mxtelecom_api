@@ -12,7 +12,7 @@ Simple API wrapper for sending SMS' via the mxtelecom gateway.
     
     # then you can configure it with your mxtelecom info
     # note, this is optional, you can always just provide this in an options
-    # hash o the deliver_sms method.
+    # hash to the deliver_sms method.
     #             user name,    password,    and short code for smsfrom param
     mxtelecom_api 'bobbymcgee', 'password1', '12345'
     
