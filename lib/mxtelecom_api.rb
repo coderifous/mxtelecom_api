@@ -21,14 +21,14 @@ module MxtelecomApi
       @@mxtelecom_api_shortcode = shortcode
     end
 
-    def setup_sms_params(phone_number, message)
+    def setup_sms_params(phone_number, message, options={})
       phone_number.gsub!(/\D/,'')
-      param_hash = sms_params.merge( :smsmsg => URI.escape(message), :smsto => phone_number )
+      param_hash = sms_params.merge( :smsmsg => URI.escape(message), :smsto => phone_number ).merge(options)
       compile_params(param_hash)
     end
-
-    def deliver_sms(phone_number, message)
-      response = Net::HTTP.get_response(sms_host, setup_sms_params(phone_number, message))
+    
+    def deliver_sms(phone_number, message, options={})
+      response = Net::HTTP.get_response(sms_host, setup_sms_params(phone_number, message, options))
       if(respond_to?(:logger))
         logger.info("Sent SMS to #{user.mobile_phone_number}, with message '#{message}', got back \"#{response.body}\"")
       end

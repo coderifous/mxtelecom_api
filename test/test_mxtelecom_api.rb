@@ -16,6 +16,10 @@ class TestMxtelecomApi < Test::Unit::TestCase
     assert_match /user=bobbymcgee/, url
     assert_match /smsfrom=12345/, url
     assert_match /smsmsg=Call%20me!/, url
+    
+    url = TestMxtelecomApi.setup_sms_params('123-123-1234', 'Call me!', :user => "foobar", :pass => "barbaz")
+    assert_match /pass=barbaz/, url
+    assert_match /user=foobar/, url
   end
   
   def test_delivery
@@ -24,4 +28,5 @@ class TestMxtelecomApi < Test::Unit::TestCase
     resp = TestMxtelecomApi.deliver_sms('123-123-1234', 'Call me!')
     assert_equal "foo", resp
   end
+  
 end

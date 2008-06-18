@@ -10,7 +10,9 @@ Simple API wrapper for sending SMS' via the mxtelecom gateway.
     # you include it in a class
     include mxtelecom_api
     
-    # then you configure it with your mxtelecom info:
+    # then you can configure it with your mxtelecom info
+    # note, this is optional, you can always just provide this in an options
+    # hash o the deliver_sms method.
     #             user name,    password,    and short code for smsfrom param
     mxtelecom_api 'bobbymcgee', 'password1', '12345'
     
@@ -18,6 +20,9 @@ Simple API wrapper for sending SMS' via the mxtelecom gateway.
       # and then you can use the deliver_sms class method
       # it takes a phone number, and then a message.  That's it.
       User.deliver_sms(mobile_phone_number, 'You are there!  There you are!')
+
+      # or if you didn't use the config declaration, or you want to override
+      User.deliver_sms(mobile_phone_number, 'You are there!  There you are!', :user => "foobar", :pass => "barbaz")
     end
   end
 
