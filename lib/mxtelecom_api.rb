@@ -16,9 +16,9 @@ module MxtelecomApi
   module ClassMethods
     
     def mxtelecom_api(user, pass, shortcode)
-      @@mxtelecom_api_user      = user
-      @@mxtelecom_api_pass      = pass
-      @@mxtelecom_api_shortcode = shortcode
+      @mxtelecom_api_user      = user
+      @mxtelecom_api_pass      = pass
+      @mxtelecom_api_shortcode = shortcode
     end
 
     def setup_sms_params(phone_number, message, options={})
@@ -40,7 +40,7 @@ module MxtelecomApi
     end
 
     def sms_params
-      { :user => @@mxtelecom_api_user, :pass => @@mxtelecom_api_pass, :smsfrom => @@mxtelecom_api_shortcode }
+      { :user => @mxtelecom_api_user, :pass => @mxtelecom_api_pass, :smsfrom => @mxtelecom_api_shortcode }
     end
 
     def compile_params(params)

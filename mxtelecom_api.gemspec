@@ -1,12 +1,10 @@
 Gem::Specification.new do |s|
   s.name = %q{mxtelecom_api}
-  s.version = "1.0.0"
-
-  s.specification_version = 2 if s.respond_to? :specification_version=
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pat George & Jim Garvin"]
-  s.date = %q{2008-06-18}
+  s.date = %q{2008-06-24}
   s.description = %q{Let's you easily send SMS messages through the mxtelecom gateway using their HTTP API.}
   s.email = ["pat dot george at gmail.com"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "website/index.txt"]
@@ -24,7 +22,17 @@ You can also delete it if you don't want it.
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{mxtelecom_api}
-  s.rubygems_version = %q{1.0.1}
+  s.rubygems_version = %q{1.2.0}
   s.summary = %q{Let's you easily send SMS messages through the mxtelecom gateway using their HTTP API.}
   s.test_files = ["test/test_helper.rb", "test/test_mxtelecom_api.rb"]
+
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
+
+    if current_version >= 3 then
+    else
+    end
+  else
+  end
 end
