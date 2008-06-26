@@ -28,9 +28,12 @@ module MxtelecomApi
     end
     
     def deliver_sms(phone_number, message, options={})
-      response = Net::HTTP.get_response(sms_host, setup_sms_params(phone_number, message, options))
+      url_path = setup_sms_params(phone_number, message, options)
+      response = Net::HTTP.get_response(sms_host, url_path)
       if(respond_to?(:logger))
         logger.info("Sent SMS to #{user.mobile_phone_number}, with message '#{message}', got back \"#{response.body}\"")
+        logger.info("Host: #{sms_host}")
+        logger.info("URL: #{url_path}")
       end
       response
     end
