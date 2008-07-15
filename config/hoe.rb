@@ -1,7 +1,7 @@
 require 'mxtelecom_api/version'
 
 AUTHOR                  = 'Pat George & Jim Garvin'  # can also be an array of Authors
-EMAIL                   = "pat dot george at gmail.com"
+EMAIL                   = "jg dot ruby at thegarvin dot com"
 DESCRIPTION             = "Let's you easily send SMS messages through the mxtelecom gateway using their HTTP API."
 GEM_NAME                = 'mxtelecom_api' # what ppl will type to install your gem
 RUBYFORGE_PROJECT       = 'mxtelecom_api' # The unix name for your project
