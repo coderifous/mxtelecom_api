@@ -9,13 +9,13 @@ class TestMxtelecomApi < Test::Unit::TestCase
   mxtelecom_api 'bobbymcgee', 'password1', '12345'
 
   def test_url_construction
-    url = TestMxtelecomApi.setup_sms_params('123-123-1234', 'Call me!')
+    url = TestMxtelecomApi.setup_sms_params('123-123-1234', 'Call me & write me!')
     assert_match(/^\/SMSSend?/, url)
     assert_match(/smsto=1231231234/, url)
     assert_match(/pass=password1/, url)
     assert_match(/user=bobbymcgee/, url)
     assert_match(/smsfrom=12345/, url)
-    assert_match(/smsmsg=Call%20me!/, url)
+    assert_match(/smsmsg=Call\+me\+%26\+write\+me%21/, url)
     
     url = TestMxtelecomApi.setup_sms_params('123-123-1234', 'Call me!', :user => "foobar", :pass => "barbaz")
     assert_match(/pass=barbaz/, url)

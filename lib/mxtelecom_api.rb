@@ -1,7 +1,7 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-require 'uri'
+require 'cgi'
 require 'net/http'
 
 # HTTP get style api, ala:
@@ -23,7 +23,7 @@ module MxtelecomApi
 
     def setup_sms_params(phone_number, message, options={})
       phone_number.gsub!(/\D/,'')
-      param_hash = sms_params.merge( :smsmsg => URI.escape(message), :smsto => phone_number ).merge(options)
+      param_hash = sms_params.merge( :smsmsg => CGI.escape(message), :smsto => phone_number ).merge(options)
       compile_params(param_hash)
     end
     
