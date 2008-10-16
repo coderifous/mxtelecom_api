@@ -1,42 +1,40 @@
-= mxtelecom_api
+# The MXTelecom API Gem
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 Simple API wrapper for sending SMS' via the mxtelecom gateway.
 
-== SYNOPSIS:
+## SYNOPSIS:
 
-  class User < ActiveRecord::Base
-    # you include it in a class
-    include mxtelecom_api
-    
-    # then you can configure it with your mxtelecom info
-    # note, this is optional, you can always just provide this in an options
-    # hash to the deliver_sms method.
-    #             user name,    password,    and short code for smsfrom param
-    mxtelecom_api 'bobbymcgee', 'password1', '12345'
-    
-    def send_current_location_sms
-      # and then you can use the deliver_sms class method
-      # it takes a phone number, and then a message.  That's it.
-      User.deliver_sms(mobile_phone_number, 'You are there!  There you are!')
+    class User < ActiveRecord::Base
+      # you include it in a class
+      include MxtelecomApi
 
-      # or if you didn't use the config declaration, or you want to override
-      User.deliver_sms(mobile_phone_number, 'You are there!  There you are!', :user => "foobar", :pass => "barbaz")
+      # then you can configure it with your mxtelecom info
+      # note, this is optional, you can always just provide this in an options
+      # hash to the deliver_sms method.
+      #             user name,    password,    and short code for smsfrom param
+      mxtelecom_api 'bobbymcgee', 'password1', '12345'
+
+      def send_current_location_sms
+        # and then you can use the deliver_sms class method
+        # it takes a phone number, and then a message.  That's it.
+        User.deliver_sms(mobile_phone_number, 'You are there!  There you are!')
+
+        # or if you didn't use the config declaration, or you want to override
+        User.deliver_sms(mobile_phone_number, 'You are there!  There you are!', :user => "foobar", :pass => "barbaz")
+      end
     end
-  end
 
-  # see, here's what it might look like if you used it in a rails project:
-  user = User.find(:first)
-  user.send_current_location_sms
+    # see, here's what it might look like if you used it in a rails project:
+    user = User.find(:first)
+    user.send_current_location_sms
 
-== INSTALL:
+## INSTALL:
 
-* sudo gem install mxtelecom_api
+    sudo gem install mxtelecom_api
 
-== 
-
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 
